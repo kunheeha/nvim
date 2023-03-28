@@ -51,4 +51,13 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Autopairs
+  use 'jiangmiao/auto-pairs'
+  
+  -- Smoothscroll
+  use 'karb94/neoscroll.nvim'
+
+  -- Floaterm
+  use 'voldikss/vim-floaterm'
+
 end)
