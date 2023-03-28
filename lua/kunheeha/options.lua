@@ -6,9 +6,6 @@ vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.writebackup = false
 
--- highlight all matches on previous search pattern
-vim.opt.hlsearch = true
-
 -- ignore case in search pattern
 vim.opt.ignorecase = true
 
