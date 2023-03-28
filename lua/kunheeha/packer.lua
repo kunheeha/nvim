@@ -60,4 +60,7 @@ return require('packer').startup(function(use)
   -- Floaterm
   use 'voldikss/vim-floaterm'
 
+  -- VisIncr
+  use 'vim-scripts/VisIncr'
+
 end)
