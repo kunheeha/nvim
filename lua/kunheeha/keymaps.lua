@@ -43,6 +43,10 @@ keymap("n", "<leader>bk", ":bdelete<CR>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+-- Moving lines around
+keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
+
 
 ---------------------
 -- Term Mode (t) --
