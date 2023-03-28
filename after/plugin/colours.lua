@@ -14,7 +14,7 @@ function SetColour(colour)
       transparent_background = true,
       show_end_of_buffer = true,
       dim_inactive = {
-        enabled = true,
+        enabled = false,
         shade = "dark",
         percentage = 0.15,
       },
