@@ -46,3 +46,10 @@ vim.opt.numberwidth = 4			-- number column width (default=4)
 vim.opt.signcolumn = "yes"		-- show sign column
 vim.opt.mouse = "a"			-- make vim clickable
 vim.opt.clipboard = "unnamedplus"	-- system clipboard
+
+-- Search options
+vim.opt.hlsearch = false  -- prevent searched term from remaining highlighted
+vim.opt.incsearch = true  -- incremental search
+
+-- Aesthetics
+vim.opt.termguicolors = true
