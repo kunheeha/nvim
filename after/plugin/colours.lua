@@ -47,6 +47,9 @@ function SetColour(colour)
 		})
 	end
 	vim.cmd.colorscheme(colour)
+  -- override any cursoline settings in colourscheme
+  vim.opt.cursorline = true
+  vim.api.nvim_set_hl(0, 'CursorLine', { underline = true })
 end
 
 SetColour('catppuccin')
