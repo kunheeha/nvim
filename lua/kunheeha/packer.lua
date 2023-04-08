@@ -63,4 +63,16 @@ return require('packer').startup(function(use)
   -- VisIncr
   use 'vim-scripts/VisIncr'
 
+  -- VimWiki
+  use 'vimwiki/vimwiki'
+
+  -- Lualine
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+
+  -- Tabline
+  use 'kdheepak/tabline.nvim'
+
 end)
