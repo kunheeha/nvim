@@ -22,7 +22,6 @@ vim.opt.shiftwidth = 2			-- number of spaces for each indentation
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- vim.opt.termguicolors = true
 vim.opt.timeoutlen = 1000		-- time to wait for mapped sequence to complete (in milliseconds)
 vim.opt.updatetime = 300		-- faster completion
 vim.opt.undofile = true			-- persistent undo

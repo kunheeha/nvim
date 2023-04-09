@@ -75,4 +75,13 @@ return require('packer').startup(function(use)
   -- Tabline
   use 'kdheepak/tabline.nvim'
 
+  -- Notify
+  use 'rcarriga/nvim-notify'
+
+  -- Noice
+  use {
+    'folke/noice.nvim',
+    requires = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' }
+  }
+
 end)
