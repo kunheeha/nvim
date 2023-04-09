@@ -84,4 +84,7 @@ return require('packer').startup(function(use)
     requires = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' }
   }
 
+  -- Useless package
+  use 'eandrju/cellular-automaton.nvim'
+
 end)
