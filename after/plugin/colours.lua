@@ -50,7 +50,6 @@ function SetColour(colour)
   -- override any cursoline settings in colourscheme
   vim.opt.cursorline = true
   vim.api.nvim_set_hl(0, 'CursorLine', { underline = true })
-  vim.opt.laststatus = 3
 end
 
 SetColour('nord')
