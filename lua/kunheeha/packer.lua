@@ -87,4 +87,7 @@ return require('packer').startup(function(use)
   -- Useless package
   use 'eandrju/cellular-automaton.nvim'
 
+  -- Colorizer
+  use 'norcalli/nvim-colorizer.lua'
+
 end)
