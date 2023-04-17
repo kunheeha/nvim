@@ -44,7 +44,7 @@ vim.opt.mouse = "a"			-- make vim clickable
 vim.opt.clipboard = "unnamedplus"	-- system clipboard
 
 -- Search options
-vim.opt.hlsearch = true  -- prevent searched term from remaining highlighted
+vim.opt.hlsearch = true  -- searched term remaining highlighted
 vim.opt.incsearch = true  -- incremental search
 
 -- Aesthetics
