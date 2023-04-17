@@ -1,10 +1,12 @@
 local actions = require('telescope.actions')
+local builtin = require('telescope.builtin')
+
 require('telescope').setup{
-  pickers = {
-    find_files = {
-      hidden = true,
-    }
-  },
+  --pickers = {
+  --  find_files = {
+  --    hidden = true,
+  --  }
+  --},
   defaults = {
     mappings = {
       i = {
@@ -34,8 +36,25 @@ require('telescope').setup{
 -- Load fzf extension
 require('telescope').load_extension('fzf')
 
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<C-f>', builtin.find_files, {})
+--find_files = function()
+--  builtin.find_files {
+--    find_command = { '--hidden' }
+--  }
+--end
+
+function find_files()
+  builtin.find_files({
+    find_command = {
+      'rg',
+      '--files',
+      '--iglob',
+      '!.git',
+      '--hidden'
+    }
+  })
+end
+
+vim.keymap.set('n', '<C-f>', find_files, {})
 vim.keymap.set('n', '<C-g>', builtin.live_grep, {})
 vim.keymap.set('n', '<C-b>', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
