@@ -90,4 +90,7 @@ return require('packer').startup(function(use)
   -- Colorizer
   use 'norcalli/nvim-colorizer.lua'
 
+  -- Indent blankline
+  use 'lukas-reineke/indent-blankline.nvim'
+
 end)
