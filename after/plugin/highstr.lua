@@ -17,13 +17,13 @@ high_str.setup({
   }
 })
 
-vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 0<CR>', { noremap=true, silent=true }),
-vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 1<CR>', { noremap=true, silent=true }),
-vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 2<CR>', { noremap=true, silent=true }),
-vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 3<CR>', { noremap=true, silent=true }),
-vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 4<CR>', { noremap=true, silent=true }),
-vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 5<CR>', { noremap=true, silent=true }),
-vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 6<CR>', { noremap=true, silent=true }),
-vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 7<CR>', { noremap=true, silent=true }),
-vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 8<CR>', { noremap=true, silent=true }),
-vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 9<CR>', { noremap=true, silent=true }),
+vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 0<CR>', { noremap=true, silent=true })
+vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 1<CR>', { noremap=true, silent=true })
+vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 2<CR>', { noremap=true, silent=true })
+vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 3<CR>', { noremap=true, silent=true })
+vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 4<CR>', { noremap=true, silent=true })
+vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 5<CR>', { noremap=true, silent=true })
+vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 6<CR>', { noremap=true, silent=true })
+vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 7<CR>', { noremap=true, silent=true })
+vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 8<CR>', { noremap=true, silent=true })
+vim.keymap.set('v', '<leader>hl', ':<c-u>HSHighlight 9<CR>', { noremap=true, silent=true })
