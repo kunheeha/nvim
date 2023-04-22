@@ -93,4 +93,7 @@ return require('packer').startup(function(use)
   -- Indent blankline
   use 'lukas-reineke/indent-blankline.nvim'
 
+  -- HighStr
+  use 'Pocco81/HighStr.nvim'
+
 end)
