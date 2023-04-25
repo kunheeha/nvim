@@ -61,9 +61,6 @@ return require('packer').startup(function(use)
   -- Smoothscroll
   use 'karb94/neoscroll.nvim'
 
-  -- Floaterm
-  use 'voldikss/vim-floaterm'
-
   -- VisIncr
   use 'vim-scripts/VisIncr'
 
