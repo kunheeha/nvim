@@ -12,16 +12,26 @@ function SetColour(colour)
     vim.g.solarized_disable_background = false
   else
     vim.opt.background = 'dark'
-    -- Custom
+    -- Nord
     if colour == 'nord' then
       vim.opt.background = 'dark'
-      vim.g.nord_contrast = false
+      vim.g.nord_contrast = true
       vim.g.nord_borders = true
-      vim.g.nord_disable_background = true
+      vim.g.nord_disable_background = false
       vim.g.nord_italic = true
       vim.g.nord_bold = true
       vim.g.nord_cursorline_tranparent = false
       vim.g.nord_uniform_diff_background = false
+    -- Glacier
+    elseif colour == 'glacier' then
+      vim.opt.background = 'dark'
+      vim.g.glacier_contrast = true
+      vim.g.glacier_borders = true
+      vim.g.glacier_disable_background = true
+      vim.g.glacier_italic = true
+      vim.g.glacier_bold = true
+      vim.g.glacier_cursorline_tranparent = false
+      vim.g.glacier_uniform_diff_background = false
     -- Catppuccin
     elseif colour == 'catppuccin' then
       require('catppuccin').setup({
@@ -69,6 +79,31 @@ function SetColour(colour)
         dim_nc_background = false,
         disable_italics = false,
       })
+    elseif colour == 'kanagawa' then
+      require('kanagawa').setup({
+        compile = false,
+        undercurl = true,
+        commentStyle = { italic = true },
+        functionStyle = {},
+        keywordStyle = { italic = true},
+        statementStyle = { bold = true },
+        typeStyle = {},
+        transparent = false,
+        dimInactive = false,
+        terminalColors = true,
+        colors = {
+            palette = {},
+            theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+        },
+        overrides = function(colors) -- add/modify highlights
+            return {}
+        end,
+        background = {
+          dark = "wave",
+          -- dark = "dragon",  -- Darker theme
+          light = "lotus"
+        }
+      })
     end
   end
 
@@ -80,4 +115,4 @@ function SetColour(colour)
   vim.api.nvim_set_hl(0, 'CursorLine', { underline = true })
 end
 
-SetColour('nord')
+SetColour('glacier')

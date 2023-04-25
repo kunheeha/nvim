@@ -28,10 +28,12 @@ return require('packer').startup(function(use)
   }
 
   -- Colourschemes
-  use 'kunheeha/nord.nvim'   -- Custom
+  use 'shaunsingh/nord.nvim' -- Nord
   use { "catppuccin/nvim", as = "catppuccin" }  -- Catppuccin
   use 'olivercederborg/poimandres.nvim' -- Poimandres
   use 'shaunsingh/solarized.nvim' -- Solarized light
+  use 'rebelot/kanagawa.nvim' -- Kanagawa
+  use 'kunheeha/glacier.nvim' -- Glacier
 
   -- LSP
   -- lsp-zero
