@@ -28,7 +28,7 @@ return require('packer').startup(function(use)
   }
 
   -- Colourschemes
-  use 'shaunsingh/nord.nvim' -- Nord
+  use 'kunheeha/nord.nvim' -- Nord
   use { "catppuccin/nvim", as = "catppuccin" }  -- Catppuccin
   use 'olivercederborg/poimandres.nvim' -- Poimandres
   use 'shaunsingh/solarized.nvim' -- Solarized light
