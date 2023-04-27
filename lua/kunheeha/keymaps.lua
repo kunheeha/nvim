@@ -34,6 +34,12 @@ keymap("n", "<S-Tab>", ":bprev<CR>", opts)
 -- Kill buffer
 keymap("n", "<leader>bk", ":bdelete<CR>", opts)
 
+-- Tmux vim navigation
+keymap("n", "<C-q>h", ":Vnleft<CR>", opts)
+keymap("n", "<C-q>j", ":Vndown<CR>", opts)
+keymap("n", "<C-q>k", ":Vnup<CR>", opts)
+keymap("n", "<C-q>l", ":Vnright<CR>", opts)
+
 
 ---------------------
 -- Visual Mode (v) --
