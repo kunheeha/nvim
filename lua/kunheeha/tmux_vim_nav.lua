@@ -8,7 +8,7 @@ function! s:VimNavigate(direction)
     elseif a:direction == 'j'
       call system('tmux select-pane -D')
     elseif a:direction == 'k'
-      call system('tmux select-pane -K')
+      call system('tmux select-pane -U')
     elseif a:direction == 'l'
       call system('tmux select-pane -R')
     endif
