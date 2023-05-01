@@ -55,6 +55,9 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Gitsigns
+  use 'lewis6991/gitsigns.nvim'
+
   -- Autopairs
   use 'jiangmiao/auto-pairs'
   
