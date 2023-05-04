@@ -101,7 +101,7 @@ return require('packer').startup(function(use)
   use 'eandrju/cellular-automaton.nvim'
 
   -- Colorizer
-  use 'norcalli/nvim-colorizer.lua'
+  use 'NvChad/nvim-colorizer.lua'
 
   -- Indent blankline
   use 'lukas-reineke/indent-blankline.nvim'
