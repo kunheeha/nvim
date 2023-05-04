@@ -19,6 +19,15 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
 
+  -- NeoTree
+  use {
+    'nvim-neo-tree/neo-tree.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+    }
+  }
   -- NvimTree
   use {
     'nvim-tree/nvim-tree.lua',
