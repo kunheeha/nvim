@@ -43,6 +43,10 @@ return require('packer').startup(function(use)
   use 'shaunsingh/solarized.nvim' -- Solarized light
   use 'rebelot/kanagawa.nvim' -- Kanagawa
   use 'kunheeha/glacier.nvim' -- Glacier
+  use 'svrana/neosolarized.nvim' -- Solarized dark
+
+  -- Colorbuddy
+  use 'tjdevries/colorbuddy.nvim'
 
   -- LSP
   -- lsp-zero

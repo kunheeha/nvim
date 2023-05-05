@@ -104,6 +104,13 @@ function SetColour(colour)
           light = "lotus"
         }
       })
+
+    -- Solarized Dark
+    elseif colour == 'neosolarized' then
+      require('neosolarized').setup({
+        comment_italics = true,
+        background_set = false,
+      })
     end
   end
 
