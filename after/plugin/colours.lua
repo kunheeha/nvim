@@ -10,8 +10,10 @@ function SetColour(colour)
     vim.g.solarized_contrast = false
     vim.g.solarized_borders = true
     vim.g.solarized_disable_background = false
+
   else
     vim.opt.background = 'dark'
+
     -- Nord
     if colour == 'nord' then
       vim.opt.background = 'dark'
@@ -22,6 +24,7 @@ function SetColour(colour)
       vim.g.nord_bold = true
       vim.g.nord_cursorline_tranparent = false
       vim.g.nord_uniform_diff_background = false
+
     -- Glacier
     elseif colour == 'glacier' then
       vim.opt.background = 'dark'
@@ -32,6 +35,7 @@ function SetColour(colour)
       vim.g.glacier_bold = true
       vim.g.glacier_cursorline_tranparent = false
       vim.g.glacier_uniform_diff_background = false
+
     -- Catppuccin
     elseif colour == 'catppuccin' then
       require('catppuccin').setup({
@@ -70,6 +74,7 @@ function SetColour(colour)
           mini = false,
         },
       })
+
     -- Poimandres
     elseif colour == 'poimandres' then
       require('poimandres').setup({
@@ -79,6 +84,8 @@ function SetColour(colour)
         dim_nc_background = false,
         disable_italics = false,
       })
+
+    -- Kanagawa
     elseif colour == 'kanagawa' then
       require('kanagawa').setup({
         compile = false,
