@@ -1,3 +1,6 @@
+-- Words
+vim.opt.iskeyword = "@,48-57,192-255"
+
 -- File encoding
 vim.opt.fileencoding = "utf-8"
 
