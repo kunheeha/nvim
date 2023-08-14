@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
   use 'rebelot/kanagawa.nvim' -- Kanagawa
   use 'kunheeha/glacier.nvim' -- Glacier
   use 'svrana/neosolarized.nvim' -- Solarized dark
+  use { "rose-pine/neovim", as = "rose-pine" }
 
   -- Colorbuddy
   use 'tjdevries/colorbuddy.nvim'
