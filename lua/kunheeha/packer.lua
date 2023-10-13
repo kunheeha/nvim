@@ -114,4 +114,7 @@ return require('packer').startup(function(use)
   -- HighStr
   use 'Pocco81/HighStr.nvim'
 
+  -- Twilight
+  use 'folke/twilight.nvim'
+
 end)
