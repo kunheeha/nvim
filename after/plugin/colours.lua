@@ -75,16 +75,6 @@ function SetColour(colour)
         },
       })
 
-    -- Poimandres
-    elseif colour == 'poimandres' then
-      require('poimandres').setup({
-        disable_background = true,
-        disable_float_background = false,
-        bold_vert_split = false,
-        dim_nc_background = false,
-        disable_italics = false,
-      })
-
     -- Kanagawa
     elseif colour == 'kanagawa' then
       require('kanagawa').setup({
