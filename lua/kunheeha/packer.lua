@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
   use 'kunheeha/glacier.nvim' -- Glacier
   use 'svrana/neosolarized.nvim' -- Solarized dark
   use { "rose-pine/neovim", as = "rose-pine" }
+  use 'sainnhe/gruvbox-material' -- Gruvbox
 
   -- Colorbuddy
   use 'tjdevries/colorbuddy.nvim'

@@ -146,6 +146,9 @@ function SetColour(colour)
         comment_italics = true,
         background_set = false,
       })
+
+    -- Gruvbox Material
+    elseif colour == 'gruvbox-material' then
     end
   end
 
