@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
 
   -- Telescope
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.3',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   -- Telescope fzf native
@@ -28,13 +28,36 @@ return require('packer').startup(function(use)
       'MunifTanjim/nui.nvim',
     }
   }
-  -- NvimTree
+
+  -- Windowpicker (mainly for use with Neotree)
   use {
-    'nvim-tree/nvim-tree.lua',
+    's1n7ax/nvim-window-picker',
+    tag = 'v2.*',
+    config = function()
+        require'window-picker'.setup()
+    end,
+  }
+  -- Octo
+  use {
+    'pwntester/octo.nvim',
     requires = {
-      'nvim-tree/nvim-web-devicons',
+      'nvim-lua/plenary.nvim',
+      'nvim.telescope/telescope.nvim',
+      'nvim-tree/nvim-tree-web-devicons',
     }
   }
+
+  -- Sneak
+  use 'justinmk/vim-sneak'
+
+  -- Todo Comments
+  use {
+    'folke/todo-comments.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- Surround
+  use 'tpope/vim-surround'
 
   -- Colourschemes
   use 'kunheeha/nord.nvim' -- Nord
