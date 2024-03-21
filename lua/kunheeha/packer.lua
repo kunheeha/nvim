@@ -4,6 +4,16 @@ return require('packer').startup(function(use)
 
   use 'wbthomason/packer.nvim'
 
+  -- Harpoon
+  use {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+    }
+  }
+
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.3',
@@ -92,8 +102,13 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- GIT
   -- Gitsigns
   use 'lewis6991/gitsigns.nvim'
+  -- Fugitive
+  use 'tpope/vim-fugitive'
+  -- Diffview
+  use 'sindrets/diffview.nvim'
 
   -- Autopairs
   use 'jiangmiao/auto-pairs'
