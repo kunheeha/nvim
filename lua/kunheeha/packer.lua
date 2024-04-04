@@ -39,6 +39,9 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Arial
+  use 'stevearc/aerial.nvim'
+
   -- Windowpicker (mainly for use with Neotree)
   use {
     's1n7ax/nvim-window-picker',
