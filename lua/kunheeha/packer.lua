@@ -56,7 +56,7 @@ return require('packer').startup(function(use)
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim.telescope/telescope.nvim',
-      'nvim-tree/nvim-tree-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     }
   }
 
