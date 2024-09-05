@@ -105,6 +105,7 @@ function SetColour(colour)
     -- Rose pine
     elseif colour == 'rose-pine' then
       require('rose-pine').setup({
+        --variant = 'dawn',
         variant = 'auto',
         dark_variant = 'main',
         bold_vert_split = false,
