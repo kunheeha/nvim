@@ -161,3 +161,10 @@ function SetColour(colour)
 end
 
 SetColour('rose-pine')
+
+-- Run Bufferline after setting colours first
+require("bufferline").setup {
+  options = {
+    separator_style = "slant"
+  }
+}
