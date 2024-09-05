@@ -25,7 +25,7 @@ require('lualine').setup {
       {
         require("noice").api.statusline.mode.get,
         cond = require("noice").api.statusline.mode.has,
-        color = { fg = "#ff9e64" }
+        color = { fg = "#e0def4" }
       },
       'encoding',
       'fileformat',
@@ -42,7 +42,19 @@ require('lualine').setup {
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
+  tabline = {
+    lualine_a = {"windows"},
+    lualine_b = {
+      {
+        "filename",
+        path = 1
+      }
+    },
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {"tabs"},
+  },
   winbar = {},
   inactive_winbar = {},
   extensions = {}
