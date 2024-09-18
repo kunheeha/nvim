@@ -57,5 +57,6 @@ end
 vim.keymap.set('n', '<leader>f', find_files, {})
 vim.keymap.set('n', '<C-g>', builtin.live_grep, {})
 vim.keymap.set('n', '<C-b>', builtin.buffers, {})
+vim.keymap.set('n', '<C-s>', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>r', builtin.registers, {})
