@@ -75,16 +75,6 @@ function SetColour(colour)
         },
       })
 
-    -- Poimandres
-    elseif colour == 'poimandres' then
-      require('poimandres').setup({
-        disable_background = true,
-        disable_float_background = false,
-        bold_vert_split = false,
-        dim_nc_background = false,
-        disable_italics = false,
-      })
-
     -- Kanagawa
     elseif colour == 'kanagawa' then
       require('kanagawa').setup({
@@ -115,6 +105,7 @@ function SetColour(colour)
     -- Rose pine
     elseif colour == 'rose-pine' then
       require('rose-pine').setup({
+        --variant = 'dawn',
         variant = 'auto',
         dark_variant = 'main',
         bold_vert_split = false,
@@ -156,6 +147,9 @@ function SetColour(colour)
         comment_italics = true,
         background_set = false,
       })
+
+    -- Gruvbox Material
+    elseif colour == 'gruvbox-material' then
     end
   end
 
