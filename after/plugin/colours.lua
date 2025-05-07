@@ -155,7 +155,7 @@ function SetColour(colour)
 
   -- override any cursoline settings in colourscheme
   vim.opt.cursorline = true
-  vim.api.nvim_set_hl(0, 'CursorLine', { underline = true })
+  vim.api.nvim_set_hl(0, 'CursorLine', { underline = true, sp = '#c4a7e7' })
 end
 
 SetColour('rose-pine')
