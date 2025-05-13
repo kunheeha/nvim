@@ -105,6 +105,9 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Java
+  use 'mfussenegger/nvim-jdtls'
+
   -- GIT
   -- Gitsigns
   use 'lewis6991/gitsigns.nvim'
