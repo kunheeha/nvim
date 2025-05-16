@@ -74,10 +74,7 @@ return require('packer').startup(function(use)
 
   -- Colourschemes
   use 'kunheeha/nord.nvim' -- Nord
-  use { "catppuccin/nvim", as = "catppuccin" }  -- Catppuccin
   use 'shaunsingh/solarized.nvim' -- Solarized light
-  use 'rebelot/kanagawa.nvim' -- Kanagawa
-  use 'kunheeha/glacier.nvim' -- Glacier
   use 'svrana/neosolarized.nvim' -- Solarized dark
   use { "rose-pine/neovim", as = "rose-pine" }
 
