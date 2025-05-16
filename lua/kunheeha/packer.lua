@@ -4,9 +4,19 @@ return require('packer').startup(function(use)
 
   use 'wbthomason/packer.nvim'
 
+  -- Harpoon
+  use {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+    }
+  }
+
   -- Telescope
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   -- Telescope fzf native
@@ -28,21 +38,43 @@ return require('packer').startup(function(use)
       'MunifTanjim/nui.nvim',
     }
   }
-  -- NvimTree
+
+  -- Arial
+  use 'stevearc/aerial.nvim'
+
+  -- Windowpicker (mainly for use with Neotree)
   use {
-    'nvim-tree/nvim-tree.lua',
+    's1n7ax/nvim-window-picker',
+    tag = 'v2.*',
+    config = function()
+        require'window-picker'.setup()
+    end,
+  }
+  -- Octo
+  use {
+    'pwntester/octo.nvim',
     requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim.telescope/telescope.nvim',
       'nvim-tree/nvim-web-devicons',
     }
   }
 
+  -- Sneak
+  use 'justinmk/vim-sneak'
+
+  -- Todo Comments
+  use {
+    'folke/todo-comments.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- Surround
+  use 'tpope/vim-surround'
+
   -- Colourschemes
   use 'kunheeha/nord.nvim' -- Nord
-  use { "catppuccin/nvim", as = "catppuccin" }  -- Catppuccin
-  use 'olivercederborg/poimandres.nvim' -- Poimandres
   use 'shaunsingh/solarized.nvim' -- Solarized light
-  use 'rebelot/kanagawa.nvim' -- Kanagawa
-  use 'kunheeha/glacier.nvim' -- Glacier
   use 'svrana/neosolarized.nvim' -- Solarized dark
   use { "rose-pine/neovim", as = "rose-pine" }
 
@@ -69,8 +101,13 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- GIT
   -- Gitsigns
   use 'lewis6991/gitsigns.nvim'
+  -- Fugitive
+  use 'tpope/vim-fugitive'
+  -- Diffview
+  use 'sindrets/diffview.nvim'
 
   -- Autopairs
   use 'jiangmiao/auto-pairs'
@@ -89,9 +126,6 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
-
-  -- Tabline
-  use 'kdheepak/tabline.nvim'
 
   -- Notify
   use 'rcarriga/nvim-notify'

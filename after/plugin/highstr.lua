@@ -27,4 +27,4 @@ vim.keymap.set('v', '<leader>hl6', ':<c-u>HSHighlight 6<CR>', { noremap=true, si
 vim.keymap.set('v', '<leader>hl7', ':<c-u>HSHighlight 7<CR>', { noremap=true, silent=true })
 vim.keymap.set('v', '<leader>hl8', ':<c-u>HSHighlight 8<CR>', { noremap=true, silent=true })
 vim.keymap.set('v', '<leader>hl9', ':<c-u>HSHighlight 9<CR>', { noremap=true, silent=true })
-vim.keymap.set('n', '<leader>rhl', ':<c-u>HSRmHighlight rm_all<CR>', { noremap=true, silent=true })
+vim.keymap.set('n', '<leader>hlr', ':<c-u>HSRmHighlight rm_all<CR>', { noremap=true, silent=true })

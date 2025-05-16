@@ -25,96 +25,10 @@ function SetColour(colour)
       vim.g.nord_cursorline_tranparent = false
       vim.g.nord_uniform_diff_background = false
 
-    -- Glacier
-    elseif colour == 'glacier' then
-      vim.opt.background = 'dark'
-      vim.g.glacier_contrast = true
-      vim.g.glacier_borders = true
-      vim.g.glacier_disable_background = true
-      vim.g.glacier_italic = true
-      vim.g.glacier_bold = true
-      vim.g.glacier_cursorline_tranparent = false
-      vim.g.glacier_uniform_diff_background = false
-
-    -- Catppuccin
-    elseif colour == 'catppuccin' then
-      require('catppuccin').setup({
-        flavour = 'mocha',
-        transparent_background = true,
-        show_end_of_buffer = true,
-        dim_inactive = {
-          enabled = false,
-          shade = "dark",
-          percentage = 0.15,
-        },
-        no_italic = false,
-        no_bold = false,
-        styles = {
-          comments = { 'italic' },
-          conditionals = { 'italic' },
-          loops = {},
-          functions = {},
-          keywords = {},
-          strings = {},
-          variables = {},
-          numbers = {},
-          booleans = {},
-          properties = {},
-          types = {},
-          operators = {},
-        },
-        color_overrides = {},
-        custom_highlights = {},
-        integrations = {
-          cmp = true,
-          gitsigns = true,
-          nvimtree = true,
-          telescope = true,
-          notify = false,
-          mini = false,
-        },
-      })
-
-    -- Poimandres
-    elseif colour == 'poimandres' then
-      require('poimandres').setup({
-        disable_background = true,
-        disable_float_background = false,
-        bold_vert_split = false,
-        dim_nc_background = false,
-        disable_italics = false,
-      })
-
-    -- Kanagawa
-    elseif colour == 'kanagawa' then
-      require('kanagawa').setup({
-        compile = false,
-        undercurl = true,
-        commentStyle = { italic = true },
-        functionStyle = {},
-        keywordStyle = { italic = true},
-        statementStyle = { bold = true },
-        typeStyle = {},
-        transparent = false,
-        dimInactive = false,
-        terminalColors = true,
-        colors = {
-            palette = {},
-            theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-        },
-        overrides = function(colors) -- add/modify highlights
-            return {}
-        end,
-        background = {
-          dark = "wave",
-          -- dark = "dragon",  -- Darker theme
-          light = "lotus"
-        }
-      })
-
     -- Rose pine
     elseif colour == 'rose-pine' then
       require('rose-pine').setup({
+        --variant = 'dawn',
         variant = 'auto',
         dark_variant = 'main',
         bold_vert_split = false,
@@ -164,7 +78,7 @@ function SetColour(colour)
 
   -- override any cursoline settings in colourscheme
   vim.opt.cursorline = true
-  vim.api.nvim_set_hl(0, 'CursorLine', { underline = true })
+  vim.api.nvim_set_hl(0, 'CursorLine', { underline = true, sp = '#c4a7e7' })
 end
 
 SetColour('rose-pine')
