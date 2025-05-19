@@ -1,0 +1,6 @@
+require("config.keymaps")
+require("config.lazy")
+require("config.colors").set("rose-pine")
+require("config.options")
+require("config.tmux_vim_nav")
+require("config.abbreviations")

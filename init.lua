@@ -1,1 +1,1 @@
-require("kunheeha")
+require("config")
