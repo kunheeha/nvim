@@ -55,8 +55,5 @@ return {
     vim.keymap.set("n", "<C-b>", builtin.buffers, {})
     vim.keymap.set("n", "<leader>h", builtin.help_tags, {})
     vim.keymap.set("n", "<leader>r", builtin.registers, {})
-    -- LSP
-    vim.keymap.set("n", "<C-s>", builtin.lsp_document_symbols, {})
-    vim.keymap.set("n", "gr", builtin.lsp_references, {})
   end,
 }
