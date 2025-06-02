@@ -5,18 +5,15 @@ return {
   --- @type blink.cmp.Config
   opts = {
     keymap = {
-      -- C-y to accept
-      -- C-Space: Open menu or open docs if already open
-      -- C-n/C-p or Up/Down: Select next/prev item
-      -- C-e: Hide menu
-      -- C-k: Toggle signature help (if signaure.enabled = true)
-      preset = "default"
-
-      -- 'super-tab' for tab to accept
-      -- 'enter' for enter to accept
-      -- 'none' for no mappings
-      --
       -- See :h blink-cmp-config-keymap for defining custom keymap
+      preset = "none",
+
+      ["<C-space>"] = { "select_and_accept" },
+      ["<C-j>"] = { "select_next" },
+      ["<C-k>"] = { "select_prev" },
+      ["<C-e>"] = { "show", "show_documentation", "hide_documentation" },
+      ["Down"] = { "scroll_documentation_down" },
+      ["Up"] = { "scroll_documentation_up" },
     },
 
     appearance = {
