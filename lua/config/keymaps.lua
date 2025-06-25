@@ -4,10 +4,6 @@ vim.g.mapleader = ","
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
--- Escape key --
-keymap("i", "ii", "<Esc>", opts)
-keymap("v", "ii", "<Esc>", opts)
-
 ---------------------
 -- Normal Mode (n) --
 ---------------------
