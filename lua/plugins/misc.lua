@@ -16,7 +16,7 @@ return {
     "vim-scripts/VisIncr",
   },
   -- vimwiki
-  {
-    "vimwiki/vimwiki",
-  },
+  --{
+  --  "vimwiki/vimwiki",
+  --},
 }
