@@ -12,8 +12,8 @@ return {
       ["<C-j>"] = { "select_next" },
       ["<C-k>"] = { "select_prev" },
       ["<C-e>"] = { "show", "show_documentation", "hide_documentation" },
-      ["Down"] = { "scroll_documentation_down" },
-      ["Up"] = { "scroll_documentation_up" },
+      ["<C-Down>"] = { "scroll_documentation_down" },
+      ["<C-Up>"] = { "scroll_documentation_up" },
     },
 
     appearance = {
