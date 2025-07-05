@@ -15,6 +15,9 @@ return {
   {
     "vim-scripts/VisIncr",
   },
+  --{
+  --  "j-hui/fidget.nvim",
+  --}
   -- vimwiki
   --{
   --  "vimwiki/vimwiki",
