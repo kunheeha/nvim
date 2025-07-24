@@ -18,6 +18,7 @@ return {
         vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
         vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, opts)
         vim.keymap.set("n", "<C-s>", require("telescope.builtin").lsp_document_symbols, opts)
+        vim.keymap.set("n", "gl", function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, opts)
       end,
     })
 
