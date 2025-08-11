@@ -55,5 +55,6 @@ return {
     vim.keymap.set("n", "<C-b>", builtin.buffers, {})
     vim.keymap.set("n", "<leader>h", builtin.help_tags, {})
     vim.keymap.set("n", "<leader>r", builtin.registers, {})
+    vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find, {})
   end,
 }
