@@ -16,3 +16,6 @@ vim.cmd('abb ot to')
 vim.cmd('abb reponse response')
 vim.cmd('abb retrun return')
 vim.cmd('abb backedn backend')
+vim.cmd('abb delte delete')
+vim.cmd('abb wokr work')
+
