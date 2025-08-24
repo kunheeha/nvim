@@ -35,15 +35,15 @@ return {
           local part1 = vim.fn.fnamemodify(project_dir, ":t")
           local part2 = vim.fn.fnamemodify(worktree_dir, ":t")
           local project_name = part1 .. "/" .. part2
-          local workspace_dir = '/Users/kunheeh/.javaprojects/' .. project_name
+          local workspace_dir = '/home/kunheeha/.javaprojects/' .. project_name
           local root_markers = {"pom.xml"}
           local root_dir = require("jdtls.setup").find_root(root_markers)
           
           local config = {
             cmd = {
-              '/Users/kunheeh/.local/share/nvim/mason/packages/jdtls/bin/jdtls',
+              '/home/kunheeha/.local/share/nvim/mason/packages/jdtls/bin/jdtls',
               '--no-validate-java-version',
-              '--java-executable', '/Users/kunheeh/.sdkman/candidates/java/21.0.4-amzn/bin/java',
+              '--java-executable', '/usr/lib/jvm/java-24-openjdk/bin/java',
               '-data', workspace_dir,
             },
             root_dir = root_dir,
