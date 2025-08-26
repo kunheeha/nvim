@@ -58,18 +58,13 @@ return {
     local lspconfig = require("lspconfig")
     lspconfig.jdtls.setup = function() end
     
-    -- Auto-kill phantom jdtls clients
-    vim.api.nvim_create_autocmd("LspAttach", {
-      callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client.name == "jdtls" and client.config.cmd[1] == "jdtls" then
-          print("Phantom jdtls client detected and stopped (id: " .. client.id .. ")")
-          vim.schedule(function()
-            client.stop()
-          end)
-        end
-      end,
-    })
+    -- Completely disable lspconfig jdtls to prevent any default config application
+    lspconfig.jdtls = {
+      setup = function() end,
+      autostart = false,
+    }
+    
+    
 
     -- Override configs
     local servers = {
