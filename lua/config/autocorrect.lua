@@ -18,4 +18,5 @@ vim.cmd('abb retrun return')
 vim.cmd('abb backedn backend')
 vim.cmd('abb delte delete')
 vim.cmd('abb wokr work')
+vim.cmd('abb endponit endpoint')
 
