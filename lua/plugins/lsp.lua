@@ -55,11 +55,10 @@ return {
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     -- More aggressive jdtls prevention
-    local lspconfig = require("lspconfig")
-    lspconfig.jdtls.setup = function() end
-    
+    vim.lsp.config.jdtls.setup = function() end
+
     -- Completely disable lspconfig jdtls to prevent any default config application
-    lspconfig.jdtls = {
+    vim.lsp.config.jdtls = {
       setup = function() end,
       autostart = false,
     }
@@ -83,7 +82,7 @@ return {
           end
           local server = servers[server_name] or {}
           server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-          require("lspconfig")[server_name].setup(server)
+          vim.lsp.config[server_name].setup(server)
         end
       }
     })
