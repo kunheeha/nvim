@@ -27,7 +27,7 @@ return {
           -- Check if jdtls is already running for this project
           local existing_clients = vim.lsp.get_clients({ name = "jdtls" })
           for _, client in ipairs(existing_clients) do
-            if client.config.cmd and client.config.cmd[1] ~= "jdtls" then
+            if client.config.cmd and type(client.config.cmd) == "table" and client.config.cmd[1] ~= "jdtls" then
               -- Custom jdtls client already exists, just attach to current buffer
               vim.lsp.buf_attach_client(0, client.id)
               return
@@ -101,7 +101,7 @@ return {
             original_lsp_start = vim.lsp.start
             
             vim.lsp.start = function(lsp_config, lsp_opts)
-              if lsp_config.cmd and lsp_config.cmd[1] and lsp_config.cmd[1]:match("jdtls") then
+              if type(lsp_config.cmd) == "table" and lsp_config.cmd[1] and lsp_config.cmd[1]:match("jdtls") then
                 -- Block phantom client calls (cmd[1] == "jdtls")
                 if lsp_config.cmd[1] == "jdtls" then
                   return nil
@@ -119,6 +119,14 @@ return {
           end
           
           require("jdtls").start_or_attach(config)
+
+          -- Ensure attachment for first buffer (workaround for attachment issue)
+          vim.defer_fn(function()
+            local clients = vim.lsp.get_clients({ name = "jdtls" })
+            if #clients > 0 and #vim.lsp.get_clients({ bufnr = 0 }) == 0 then
+              vim.lsp.buf_attach_client(0, clients[1].id)
+            end
+          end, 2000)
         end,
       })
     end,

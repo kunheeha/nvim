@@ -54,12 +54,10 @@ return {
 
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    -- More aggressive jdtls prevention
-    vim.lsp.config.jdtls.setup = function() end
-
-    -- Completely disable lspconfig jdtls to prevent any default config application
+    -- Disable automatic jdtls configuration in Neovim 0.11+
+    -- Set to an empty config with cmd as false to prevent auto-start
     vim.lsp.config.jdtls = {
-      setup = function() end,
+      cmd = false,  -- This prevents the LSP from starting
       autostart = false,
     }
     
