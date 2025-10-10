@@ -54,22 +54,14 @@ return {
 
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    -- More aggressive jdtls prevention
-    local lspconfig = require("lspconfig")
-    lspconfig.jdtls.setup = function() end
+    -- Disable automatic jdtls configuration in Neovim 0.11+
+    -- Set to an empty config with cmd as false to prevent auto-start
+    vim.lsp.config.jdtls = {
+      cmd = false,  -- This prevents the LSP from starting
+      autostart = false,
+    }
     
-    -- Auto-kill phantom jdtls clients
-    vim.api.nvim_create_autocmd("LspAttach", {
-      callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client.name == "jdtls" and client.config.cmd[1] == "jdtls" then
-          print("Phantom jdtls client detected and stopped (id: " .. client.id .. ")")
-          vim.schedule(function()
-            client.stop()
-          end)
-        end
-      end,
-    })
+    
 
     -- Override configs
     local servers = {
@@ -88,7 +80,7 @@ return {
           end
           local server = servers[server_name] or {}
           server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-          require("lspconfig")[server_name].setup(server)
+          vim.lsp.config[server_name].setup(server)
         end
       }
     })
