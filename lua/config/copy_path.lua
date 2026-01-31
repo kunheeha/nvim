@@ -1,0 +1,5 @@
+vim.keymap.set('n', '<leader>cp', function ()
+  local path = vim.fn.expand('%')
+  vim.fn.setreg('+', path)
+  print('Copied: ' .. path)
+end, { desc = 'Copy file path to clipboard' })
