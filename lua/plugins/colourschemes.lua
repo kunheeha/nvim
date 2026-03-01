@@ -4,4 +4,5 @@ return {
   { "shaunsingh/solarized.nvim", lazy = true },
   { "svrana/neosolarized.nvim", lazy = true },
   { "rose-pine/neovim", name = "rose-pine", lazy = true },
+  { "zenbones-theme/zenbones.nvim", dependencies = "rktjmp/lush.nvim", lazy = true },
 }

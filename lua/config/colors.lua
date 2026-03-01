@@ -4,15 +4,19 @@ local M = {}
 function M.set(colour)
   vim.opt.termguicolors = true
 
-  if colour == "solarized" then
+  if colour == "zenbones" or colour == "zenwritten" or colour == "seoulbones" or colour == "solarized" then
     vim.opt.background = "light"
-    vim.g.solarized_italic_comments = true
-    vim.g.solarized_italic_keywords = true
-    vim.g.solarized_italic_functions = true
-    vim.g.solarized_italic_variables = false
-    vim.g.solarized_contrast = false
-    vim.g.solarized_borders = true
-    vim.g.solarized_disable_background = false
+    vim.g.zenbones_brighness = "bright"
+
+    if colour == "solarized" then
+      vim.g.solarized_italic_comments = true
+      vim.g.solarized_italic_keywords = true
+      vim.g.solarized_italic_functions = true
+      vim.g.solarized_italic_variables = false
+      vim.g.solarized_contrast = false
+      vim.g.solarized_borders = true
+      vim.g.solarized_disable_background = false
+    end
 
   else
     vim.opt.background = "dark"
