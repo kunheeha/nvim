@@ -30,6 +30,22 @@ return {
       pattern = self.ft,
       callback = function()
         require("metals").initialize_or_attach(metals_config)
+
+        -- Ensure proper indentation settings for Scala
+        vim.opt_local.expandtab = true      -- Convert tabs to spaces
+        vim.opt_local.tabstop = 2           -- Tab = 2 spaces
+        vim.opt_local.shiftwidth = 2        -- Indent = 2 spaces
+        vim.opt_local.softtabstop = 2       -- Backspace removes 2 spaces
+        vim.opt_local.autoindent = true     -- Copy indent from current line
+        vim.opt_local.smartindent = false   -- Don't add extra indent logic
+
+        -- Auto-format with scalafmt on save
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = vim.api.nvim_get_current_buf(),
+          callback = function()
+            vim.lsp.buf.format({ async = false })
+          end,
+        })
       end,
       group = nvim_metals_group,
     })
