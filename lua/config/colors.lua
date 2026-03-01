@@ -63,11 +63,6 @@ function M.set(colour)
         },
       })
 
-    elseif colour == "neosolarized" then
-      require("neosolarized").setup({
-        comment_italics = true,
-        background_set = false,
-      })
     end
   end
 
