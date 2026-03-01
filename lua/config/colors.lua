@@ -74,7 +74,7 @@ function M.set(colour)
   vim.cmd.colorscheme(colour)
 
   vim.opt.cursorline = true
-  vim.api.nvim_set_hl(0, "CursorLine", { underline = true, sp = "#c4a7e7" })
+  --vim.api.nvim_set_hl(0, "CursorLine", { underline = true, sp = "#c4a7e7" })
 end
 
 return M
