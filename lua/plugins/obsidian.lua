@@ -15,6 +15,10 @@ return {
         },
       },
       ui = { enable = false },
+      legacy_commands = false,
+      note_id_func = function(title)
+        return title
+      end,
     })
 
     local opts = { noremap = true, silent = true }
