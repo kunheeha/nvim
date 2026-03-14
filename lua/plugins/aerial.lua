@@ -9,6 +9,14 @@ return {
       end,
     })
 
-    vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+    local vault_path = vim.fn.expand("~/Notes")
+    vim.keymap.set("n", "<leader>a", function()
+      local buf_path = vim.fn.expand("%:p")
+      if buf_path:find(vault_path, 1, true) == 1 then
+        vim.cmd("Obsidian new")
+      else
+        vim.cmd("AerialToggle!")
+      end
+    end)
   end,
 }
