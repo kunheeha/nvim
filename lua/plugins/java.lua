@@ -41,8 +41,13 @@ return {
           local project_name = part1 .. "/" .. part2
           local workspace_dir = '/home/kunheeha/.javaprojects/' .. project_name
           local root_markers = {"pom.xml"}
+<<<<<<< HEAD
           local root_dir = require("jdtls.setup").find_root(root_markers)
 
+=======
+          local root_dir = require("jdtls.setup").find_root(root_markers, vim.fn.getcwd())
+          
+>>>>>>> f3f77bd201211fe5f01f3c2644f39b750f7acb33
           if not root_dir then
             vim.notify("Could not find Java project root", vim.log.levels.WARN)
             return
