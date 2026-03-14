@@ -19,7 +19,7 @@ return {
       -- Global state for preventing duplicate jdtls calls
       local jdtls_hook_installed = false
       local original_lsp_start = nil
-      
+
       -- Setup jdtls when Java files are opened
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "java",
@@ -33,7 +33,7 @@ return {
               return
             end
           end
-          
+
           local project_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:h")
           local worktree_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h")
           local part1 = vim.fn.fnamemodify(project_dir, ":t")
@@ -42,12 +42,12 @@ return {
           local workspace_dir = '/home/kunheeha/.javaprojects/' .. project_name
           local root_markers = {"pom.xml"}
           local root_dir = require("jdtls.setup").find_root(root_markers)
-          
+
           if not root_dir then
             vim.notify("Could not find Java project root", vim.log.levels.WARN)
             return
           end
-          
+
           local config = {
             cmd = {
               '/home/kunheeha/.local/share/nvim/mason/packages/jdtls/bin/jdtls',
@@ -68,8 +68,8 @@ return {
                 references = {
                   includeDecompiledSources = true,
                 },
-                contentProvider = { 
-                  preferred = "fernflower" 
+                contentProvider = {
+                  preferred = "fernflower"
                 },
                 import = {
                   maven = {
@@ -99,25 +99,25 @@ return {
           if not jdtls_hook_installed then
             jdtls_hook_installed = true
             original_lsp_start = vim.lsp.start
-            
+
             vim.lsp.start = function(lsp_config, lsp_opts)
               if type(lsp_config.cmd) == "table" and lsp_config.cmd[1] and lsp_config.cmd[1]:match("jdtls") then
                 -- Block phantom client calls (cmd[1] == "jdtls")
                 if lsp_config.cmd[1] == "jdtls" then
                   return nil
                 end
-                
+
                 -- For custom calls without buffer info, add current buffer
                 if not lsp_opts then
                   local current_bufnr = vim.api.nvim_get_current_buf()
                   lsp_opts = { bufnr = current_bufnr }
                 end
               end
-              
+
               return original_lsp_start(lsp_config, lsp_opts)
             end
           end
-          
+
           require("jdtls").start_or_attach(config)
 
           -- Ensure attachment for first buffer (workaround for attachment issue)
