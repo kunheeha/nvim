@@ -20,6 +20,7 @@ return {
         vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, opts)
         vim.keymap.set("n", "<C-s>", require("telescope.builtin").lsp_document_symbols, opts)
         vim.keymap.set("n", "gl", function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, opts)
+        vim.keymap.set("n", "<leader>nr", function() vim.lsp.buf.rename() end, opts)
       end,
     })
 
