@@ -13,6 +13,11 @@ return {
       callback = function(event)
         local opts = {buffer = event.buf}
 
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client then
+          client.server_capabilities.semanticTokensProvider = nil
+        end
+
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
         vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
