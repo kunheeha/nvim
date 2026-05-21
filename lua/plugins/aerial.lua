@@ -1,6 +1,6 @@
 return {
   "stevearc/aerial.nvim",
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
+  dependencies = {},
   config = function()
     require("aerial").setup({
       on_attach = function(bufnr)

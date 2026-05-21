@@ -37,7 +37,7 @@ return {
         callback = function(args)
           local clients = vim.lsp.get_clients({ name = "jdtls" })
           if #clients > 0 then
-            require("jdtls").open_classfile(args.match)
+            require("jdtls").open_classfile(args.buf, args.match)
           else
             vim.notify("jdtls client not ready", vim.log.levels.WARN)
           end
@@ -70,10 +70,13 @@ return {
           end
         end
 
+        local classpath_path = workspace_root .. "/" .. project_path .. "/.classpath"
+        local bufnr = vim.api.nvim_get_current_buf()
+
         local notify = require("notify")
         local notification = notify("BazelSetup: starting for " .. project_path .. "...", vim.log.levels.INFO, {
           title = "BazelSetup",
-          timeout = false, -- persistent until replaced
+          timeout = false,
         })
 
         vim.fn.jobstart({ "bash", script_path, workspace_root, project_path }, {
@@ -107,27 +110,39 @@ return {
           end,
           on_exit = function(_, code)
             vim.schedule(function()
-              if code == 0 then
-                notify("BazelSetup complete!", vim.log.levels.INFO, {
-                  title = "BazelSetup",
-                  replace = notification,
-                  timeout = 3000,
-                })
-                -- Stop existing jdtls clients and re-trigger setup
-                for _, client in ipairs(vim.lsp.get_clients({ name = "jdtls" })) do
-                  client:stop()
-                end
-                -- Re-trigger FileType autocmd to start jdtls with new classpath
-                vim.defer_fn(function()
-                  vim.cmd("doautocmd FileType java")
-                end, 1000)
-              else
+              if code ~= 0 then
                 notify("BazelSetup failed (exit code " .. code .. ")", vim.log.levels.ERROR, {
                   title = "BazelSetup",
                   replace = notification,
                   timeout = 5000,
                 })
+                return
               end
+
+              if vim.fn.filereadable(classpath_path) ~= 1 then
+                notify("BazelSetup: script exited 0 but .classpath not found at:\n" .. classpath_path, vim.log.levels.ERROR, {
+                  title = "BazelSetup",
+                  replace = notification,
+                  timeout = 10000,
+                })
+                return
+              end
+
+              notify("BazelSetup complete! .classpath at " .. classpath_path, vim.log.levels.INFO, {
+                title = "BazelSetup",
+                replace = notification,
+                timeout = 3000,
+              })
+
+              for _, client in ipairs(vim.lsp.get_clients({ name = "jdtls" })) do
+                client:stop()
+              end
+              vim.defer_fn(function()
+                if vim.api.nvim_buf_is_valid(bufnr) then
+                  vim.api.nvim_set_current_buf(bufnr)
+                end
+                vim.cmd("doautocmd FileType java")
+              end, 1000)
             end)
           end,
         })
@@ -152,6 +167,33 @@ return {
           client:stop()
         end
       end, { desc = "Remove generated Bazel Eclipse files and stop jdtls" })
+
+      -- :BazelDebug command — show path resolution info
+      vim.api.nvim_create_user_command("BazelDebug", function()
+        local cwd = vim.fn.getcwd()
+        local file_dir = vim.fn.expand("%:p:h")
+        local workspace_root = find_bazel_workspace(cwd)
+        local lines = {
+          "cwd: " .. cwd,
+          "file_dir: " .. file_dir,
+          "workspace_root: " .. (workspace_root or "nil"),
+        }
+        if workspace_root then
+          local service_root = find_bazel_service_root(file_dir, workspace_root)
+          table.insert(lines, "service_root: " .. (service_root or "nil"))
+          -- Walk up and show what we find at each level
+          local dir = file_dir
+          while dir and dir ~= workspace_root and dir ~= "/" do
+            local has_build = vim.fn.filereadable(dir .. "/BUILD.bazel") == 1 or vim.fn.filereadable(dir .. "/BUILD") == 1
+            local has_classpath = vim.fn.filereadable(dir .. "/.classpath") == 1
+            if has_build or has_classpath then
+              table.insert(lines, "  " .. dir .. " BUILD=" .. tostring(has_build) .. " .classpath=" .. tostring(has_classpath))
+            end
+            dir = vim.fn.fnamemodify(dir, ":h")
+          end
+        end
+        vim.notify(table.concat(lines, "\n"), vim.log.levels.INFO)
+      end, { desc = "Debug Bazel/jdtls path resolution" })
 
       -- Global state for preventing duplicate jdtls calls
       local jdtls_hook_installed = false
@@ -205,9 +247,9 @@ return {
             local part2 = vim.fn.fnamemodify(worktree_dir, ":t")
             workspace_dir = '/Users/kunheeh/.javaprojects/' .. part1 .. "/" .. part2
           else
-            -- For Bazel, use the service directory name
+            local workspace_name = vim.fn.fnamemodify(workspace_root, ":t")
             local service_name = vim.fn.fnamemodify(root_dir, ":t")
-            workspace_dir = '/Users/kunheeh/.javaprojects/bazel-' .. service_name
+            workspace_dir = '/Users/kunheeh/.javaprojects/bazel-' .. workspace_name .. "/" .. service_name
           end
 
           local config = {

@@ -33,8 +33,12 @@ fi
 
 # Verify Java targets exist
 cd "$WORKSPACE_ROOT"
-bazel query "kind('java_.*', $BAZEL_PACKAGE/...)" --output=label 2>/dev/null | head -1 | grep -q . || {
+echo "Checking for Java targets in $BAZEL_PACKAGE..."
+STDERR_LOG=$(mktemp)
+bazel query "kind('java_.*', $BAZEL_PACKAGE/...)" --output=label 2>"$STDERR_LOG" | head -1 | grep -q . || {
   echo "Error: No Java targets found in $BAZEL_PACKAGE"
+  cat "$STDERR_LOG" | tail -5
+  rm -f "$STDERR_LOG"
   exit 1
 }
 
@@ -45,7 +49,13 @@ bazel build "$BAZEL_PACKAGE/..." --keep_going 2>/dev/null || true
 # Query for all JAR dependencies
 echo "Querying dependencies..."
 TMPFILE=$(mktemp)
-bazel cquery "deps(kind('java_.*', $BAZEL_PACKAGE/...))" --output=files 2>/dev/null >"$TMPFILE"
+if ! bazel cquery "deps(kind('java_.*', $BAZEL_PACKAGE/...))" --output=files 2>"$STDERR_LOG" >"$TMPFILE"; then
+  echo "Error: bazel cquery failed:"
+  cat "$STDERR_LOG" | tail -5
+  rm -f "$STDERR_LOG" "$TMPFILE"
+  exit 1
+fi
+rm -f "$STDERR_LOG"
 
 # Get JAR paths, filter out tool JARs
 JAR_DEPS=$(cat "$TMPFILE" |

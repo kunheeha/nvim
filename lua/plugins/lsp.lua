@@ -59,27 +59,18 @@ return {
 
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    -- Disable automatic jdtls configuration in Neovim 0.11+
-    -- Set to an empty config with cmd as false to prevent auto-start
-    vim.lsp.config.jdtls = {
-      cmd = false,  -- This prevents the LSP from starting
-      autostart = false,
-    }
-    
-    
-
     -- Override configs
     local servers = {
-      -- gopls = {}
+      pyright = {},
     }
 
     require("mason").setup({
-      PATH = "skip"  -- Prevents Mason from adding jdtls to PATH
+      PATH = "skip"
     })
     require("mason-lspconfig").setup({
+      automatic_enable = { exclude = { "jdtls" } },
       handlers = {
         function(server_name)
-          -- Skip jdtls - it's configured manually in java.lua
           if server_name == "jdtls" then
             return
           end
